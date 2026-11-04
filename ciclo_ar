@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciclo da Água - Evaporação RA</title>
+  <!-- Biblioteca A-Frame -->
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <!-- Biblioteca AR.js para Realidade Aumentada -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    
+    <!-- Marcador 'Hiro' (Imagem que a câmera precisa enxergar) -->
+    <a-marker preset="hiro">
+
+      <!-- Sol em rotação no topo -->
+      <a-sphere 
+        position="0 2 0" 
+        radius="0.4" 
+        color="#FFD700"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 4000">
+      </a-sphere>
+
+      <!-- Partículas de Vapor de Água (Bolhas subindo) -->
+      <a-entity position="0 0 0">
+        <a-sphere position="-0.2 0.2 0" radius="0.08" color="#87CEEB" opacity="0.7"
+                  animation="property: position; to: -0.2 1.8 0; loop: true; dur: 2000; easing: linear">
+        </a-sphere>
+        <a-sphere position="0.2 0.5 0" radius="0.1" color="#ADD8E6" opacity="0.6"
+                  animation="property: position; to: 0.2 2.1 0; loop: true; dur: 2500; easing: linear">
+        </a-sphere>
+        <a-sphere position="0 0.1 0" radius="0.07" color="#E0F7FA" opacity="0.8"
+                  animation="property: position; to: 0 1.9 0; loop: true; dur: 1800; easing: linear">
+        </a-sphere>
+      </a-entity>
+
+      <!-- Painel com a Explicação -->
+      <a-plane position="0 2.7 0" width="2.4" height="0.8" color="#1A1A1A" opacity="0.85">
+        <a-text 
+          value="1. EVAPORACAO\n\nO calor do Sol aquece a agua dos rios e mares, transformando-a em vapor que sobe para a atmosfera." 
+          align="center" 
+          color="#FFFFFF" 
+          width="2.2" 
+          position="0 0 0.01">
+        </a-text>
+      </a-plane>
+
+    </a-marker>
+
+    <!-- Câmera do dispositivo -->
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+</html>
